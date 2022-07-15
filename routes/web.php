@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Blog;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,6 +11,6 @@ Route::get('/', function () {
 
 Route::get('/blog/{blog:slug}', function ($slug) {
     return view('blog', [
-        'blog' => Blog::find($slug)
+        'blog' => Blog::findOrFail($slug)
     ]);
 })->where('blog','[A-z\d\-_]+');
