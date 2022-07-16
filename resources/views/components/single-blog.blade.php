@@ -6,10 +6,10 @@
                 class="card-img-top" alt="..." />
             <h3 class="my-3">{{ $blog->title }}</h3>
             <div>
-                <h6>Author - <a href="/users/{{ $blog->author->username }}">{{ $blog->author->name }}</a></p>
+                <h6>Author - <a href="/?users={{ $blog->author->username }}">{{ $blog->author->name }}</a></p>
             </div>
             <div class="mb-3">
-                <a href="/categories/{{ $blog->category->slug }}">
+                <a href="/?categories={{ $blog->category->slug }}">
                     <span class="badge bg-primary">{{ $blog->category->name }}</span>
                 </a>
             </div>
