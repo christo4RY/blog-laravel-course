@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,10 +19,6 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
-        User::truncate();
-        Blog::truncate();
-        Category::truncate();
-
         $frontend = Category::factory()->create([
             'name' => 'frontend',
             'slug' => 'frontend'
@@ -51,10 +48,5 @@ class DatabaseSeeder extends Seeder
             'category_id' => $backend->id,
             'user_id' => $kyawkyaw->id
         ]);
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

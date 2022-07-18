@@ -17,8 +17,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = [];
-
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -48,5 +46,9 @@ class User extends Authenticatable
     public function getNameAttribute($value)
     {
         return ucwords($value);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 }

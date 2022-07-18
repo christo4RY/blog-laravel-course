@@ -4,6 +4,7 @@
         <div class="d-flex">
             <a href="/#blogs" class="nav-link">Blogs</a>
             @auth
+                <img src="{{auth()->user()->avator}}" width="50" height="50" class="rounded-circle" alt="">
                 <a href="" class="nav-link">Welcome to {{ auth()->user()->name }}</a>
                 <form action="/logout">
                     @csrf

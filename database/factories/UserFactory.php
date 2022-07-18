@@ -19,6 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'avator' => "https://i.pravatar.cc/150?u=".fake()->randomNumber(1,100),
             'username' => fake()->userName(),
             'email' => fake()->safeEmail(),
             'email_verified_at' => now(),
