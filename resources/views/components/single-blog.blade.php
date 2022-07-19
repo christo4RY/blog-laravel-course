@@ -8,10 +8,22 @@
             <div>
                 <h6>Author - <a href="/?users={{ $blog->author->username }}">{{ $blog->author->name }}</a></p>
             </div>
-            <div class="mb-3">
+            <div>
                 <a href="/?categories={{ $blog->category->slug }}">
                     <span class="badge bg-primary">{{ $blog->category->name }}</span>
                 </a>
+            </div>
+            <div class="my-2">
+                @auth
+                    <form action="/blogs/{{ $blog->slug }}/subscriber" method="POST">
+                        @csrf
+                        @if (auth()->user()->isSubscribed($blog))
+                            <button type="submit" class="btn btn-danger">UnSubscribe</button>
+                        @else
+                            <button type="submit" class="btn btn-warning">Subscribe</button>
+                        @endif
+                    </form>
+                @endauth
             </div>
             <p class="lh-md">
                 {{ $blog->body }}

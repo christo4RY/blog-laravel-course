@@ -46,4 +46,17 @@ class Blog extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function subscriber()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function unSubscribed(){
+        return $this->subscriber()->detach(auth()->id());
+    }
+
+    public function subscribed() {
+        return $this->subscriber()->attach(auth()->id());
+    }
 }

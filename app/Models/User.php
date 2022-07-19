@@ -48,7 +48,23 @@ class User extends Authenticatable
         return ucwords($value);
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
+
+    public function subscribedBlogs()
+    {
+        return $this->belongsToMany(Blog::class);
+    }
+
+    public function isSubscribed($blog)
+    {
+        return auth()->user()->subscribedBlogs &&
+            auth()
+                ->user()
+                ->subscribedBlogs->contains('id', $blog->id);
+    }
+
+
 }

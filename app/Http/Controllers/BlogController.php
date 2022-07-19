@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 
 class BlogController extends Controller
 {
@@ -24,5 +25,15 @@ class BlogController extends Controller
                 ->take(3)
                 ->get(),
         ]);
+    }
+
+    public function subscriber(Blog $blog) {
+        if (User::find(auth()->id())->isSubscribed($blog)) {
+           $blog->unSubscribed();
+        }else{
+           $blog->subscribed();
+        }
+
+        return back();
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogController::class, 'index']);
@@ -13,3 +14,4 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('/login', [AuthController::class, 'login'])->middleware('guest');
 Route::post('/login', [AuthController::class, 'login_user'])->middleware('guest');
 Route::post('/blogs/{blog:slug}/comment', [CommentController::class, 'store']);
+Route::post('/blogs/{blog:slug}/subscriber' , [BlogController::class, 'subscriber']);
