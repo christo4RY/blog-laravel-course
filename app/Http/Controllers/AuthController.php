@@ -38,10 +38,13 @@ class AuthController extends Controller
             'password' => ['required', 'min:3', 'max:255'],
         ]);
         if (auth()->attempt($formData)) {
-            return redirect('/')->with('success','Welcome Back');
+            if (auth()->user()->is_admin) {
+                return redirect()->route('adminIndex');
+            }
+            return redirect('/')->with('success', 'Welcome Back');
         } else {
             return back()->withErrors([
-                'login_fail' => 'Username and Password Wrong!'
+                'login_fail' => 'Username and Password Wrong!',
             ]);
         }
     }

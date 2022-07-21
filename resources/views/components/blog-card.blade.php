@@ -1,8 +1,8 @@
 @props(['blog'])
 <div class="col-md-4 mb-4">
     <div class="card">
-        <img src="https://creativecoder.s3.ap-southeast-1.amazonaws.com/blogs/GOLwpsybfhxH0DW8O6tRvpm4jCR6MZvDtGOFgjq0.jpg"
-            class="card-img-top" alt="..." />
+        <img src='{{asset("/storage/$blog->thumbnails")}}'
+            class="card-img-top" alt="..." width="200" height="200" />
         <div class="card-body">
             <h3 class="card-title">{{ $blog->title }}</h3>
             <p class="fs-6 text-secondary">
